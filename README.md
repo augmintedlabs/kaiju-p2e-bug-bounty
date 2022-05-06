@@ -1,6 +1,8 @@
 # KaijuKingz P2E Bug Bounty
 
-Official Augminted Labs announcement: https://medium.com/@AugmintedLabs/kaijukingz-p2e-ecosystem-dc9577ff8773
+Bug Bounty Details: https://medium.com/@AugmintedLabs/kaijukingz-p2e-bug-bounty-864f7fe9e9c
+
+P2E announcement: https://medium.com/@AugmintedLabs/kaijukingz-p2e-ecosystem-dc9577ff8773
 
 Community-built infographic (Credit: [@HelmiMastuki](https://twitter.com/HelmiMastuki))
 ![](https://pbs.twimg.com/media/FOE68omXoAcGvrV?format=jpg&name=4096x4096 "KaijuKingz P2E")
