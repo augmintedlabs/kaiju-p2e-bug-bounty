@@ -19,6 +19,7 @@ error Scales_InvalidTokenAmount();
 error Scales_NotApprovedForAll();
 error Scales_NothingToWithdraw();
 error Scales_TokenNotStranded();
+error Scales_YouDontOwnTheseTokens();
 
 /**                                     ..',,;;;;:::;;;,,'..
                                  .';:ccccc:::;;,,,,,;;;:::ccccc:;'.
@@ -238,6 +239,9 @@ contract Scales is IScales, ERC20, ERC721Holder, AccessControl, Pausable, Reentr
         uint16 genesisCount;
         for (uint256 i; i < tokenIds.length; i++) {
             uint256 tokenId = tokenIds[i];
+            
+            // Check msg.sender is owner of tokenId staked in contract
+            if ( tokenOwners[tokenId] != _msgSender() ) revert Scales_YouDontOwnTheseTokens();
 
             KAIJU.safeTransferFrom(_msgSender(), address(this), tokenId);
             tokenOwners[tokenId] = _msgSender();
