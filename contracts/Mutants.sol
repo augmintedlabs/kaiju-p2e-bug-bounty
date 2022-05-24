@@ -95,6 +95,8 @@ contract Mutants is IMutants, ERC721, Ownable, ReentrancyGuard, VRFConsumerBase 
     mapping(bytes => bool) public signatureUsed;
     mapping(bytes4 => bool) public functionLocked;
 
+    error Mutant_SenderNotTokenOwner();
+
     constructor(
         address failedExperiments,
         address vrfCoordinator,
@@ -257,6 +259,7 @@ contract Mutants is IMutants, ERC721, Ownable, ReentrancyGuard, VRFConsumerBase 
         require(tokenIds.length <= CLAIM_LIMIT, "Exceeds claim limit");
 
         for (uint256 i = 0; i < tokenIds.length; i++) {
+            if (_msgSender() != ownerOf(tokenIds[i])) revert Mutant_SenderNotTokenOwner();
             FAILED_EXPERIMENTS.transferFrom(
                 _msgSender(),
                 address(0x000000000000000000000000000000000000dEaD),
